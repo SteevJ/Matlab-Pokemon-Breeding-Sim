@@ -1,0 +1,17 @@
+function [ o_x_Vals, o_y_Vals ] = IV_data_getter( i_children )
+% Calculates percent of population with a certain amount of perfect IVs
+
+    num_Perfect_IVs = cell2mat(i_children(:, 7));
+    
+    o_x_Vals = 0:max(num_Perfect_IVs);
+    o_y_Vals = zeros(1, max(num_Perfect_IVs)+1);
+    
+    for ii = 0:max(num_Perfect_IVs)
+       
+        o_y_Vals(ii+1) = sum(num_Perfect_IVs == ii);
+        
+    end
+    
+    o_y_Vals = (o_y_Vals/size(i_children,1 ))*100; % Does the percent
+
+end
